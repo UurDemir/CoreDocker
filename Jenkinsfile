@@ -24,8 +24,6 @@ pipeline
        {
         steps
         {
-            step('ASP.NET Core Building')
-            {
               script
               {
                 if(params.Build)
@@ -33,15 +31,13 @@ pipeline
                     sh label: 'Project Building', script: 'dotnet build'
                 }
               }
-            }
+            
         }
        }
        stage('Publish') 
        {
         steps
         {
-            step('ASP.NET Core Building')
-            {
                 script
                 {
                     if(params.Publish)
@@ -50,7 +46,7 @@ pipeline
                     }
                 }
             }
-        }
+        
         }
     }
 }
