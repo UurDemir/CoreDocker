@@ -1,5 +1,19 @@
 pipeline {
-properties([disableConcurrentBuilds(), parameters([booleanParam(defaultValue: true, description: '', name: 'Build'), booleanParam(defaultValue: true, description: '', name: 'Publish')]), pipelineTriggers([githubPush()])])
+agent any
+
+options {
+disableConcurrentBuilds()
+}
+
+parameters{
+booleanParam(defaultValue: true, description: '', name: 'Build')
+booleanParam(defaultValue: true, description: '', name: 'Publish')
+}
+
+pipelineTriggers{
+githubPush()
+}
+
 stages {
    stage('Build') {
    if(params.Build)
