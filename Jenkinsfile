@@ -1,5 +1,4 @@
-﻿pipeline {
-    agent any
+﻿node {
 
 properties([disableConcurrentBuilds(), parameters([booleanParam(defaultValue: true, description: '', name: 'Build'), booleanParam(defaultValue: true, description: '', name: 'Publish')]), pipelineTriggers([githubPush()])])
 stages {
