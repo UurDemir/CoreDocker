@@ -5,18 +5,16 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
-WORKDIR /src
-COPY ["CoreDocker/CoreDocker.csproj", "CoreDocker/"]
-RUN dotnet restore "CoreDocker/CoreDocker.csproj"
-COPY . .
-WORKDIR "/src/CoreDocker"
-RUN dotnet build "CoreDocker.csproj" -c Release -o /app/build
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
 
-FROM build AS publish
-RUN dotnet publish "CoreDocker.csproj" -c Release -o /app/publish
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
+
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=base /app/publish .
 ENTRYPOINT ["dotnet", "CoreDocker.dll"]
