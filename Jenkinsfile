@@ -28,7 +28,10 @@ pipeline
               {
                 if(params.Build)
                 {
-                    sh label: 'Project Building', script: 'dotnet build CoreDocker/CoreDocker.sln'
+                    dir('CoreDocker')
+                    {
+                        sh label: 'Project Building', script: 'dotnet build CoreDocker/CoreDocker.sln'
+                    }
                 }
               }
             
@@ -42,7 +45,10 @@ pipeline
                 {
                     if(params.Publish)
                     {
-                        sh label: 'Docker Publishing', script: 'docker-compose up -d'
+                        dir('CoreDocker')
+                        {
+                            sh label: 'Docker Publishing', script: 'docker-compose up -d'
+                        }
                     }
                 }
             }
