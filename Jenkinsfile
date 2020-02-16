@@ -1,5 +1,4 @@
-﻿node {
-
+﻿pipeline {
 properties([disableConcurrentBuilds(), parameters([booleanParam(defaultValue: true, description: '', name: 'Build'), booleanParam(defaultValue: true, description: '', name: 'Publish')]), pipelineTriggers([githubPush()])])
 stages {
    stage('Build') {
