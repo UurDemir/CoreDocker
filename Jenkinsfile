@@ -30,7 +30,7 @@ pipeline
                 {
                     dir('CoreDocker')
                     {
-                        sh label: 'Project Building', script: 'dotnet build CoreDocker/CoreDocker.sln'
+                        sh label: 'Project Building', script: 'dotnet build CoreDocker.sln'
                     }
                 }
               }
