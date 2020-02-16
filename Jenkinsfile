@@ -28,7 +28,7 @@ pipeline
               {
                 if(params.Build)
                 {
-                    sh label: 'Project Building', script: 'dotnet build'
+                    sh label: 'Project Building', script: 'dotnet build CoreDocker/CoreDocker.sln'
                 }
               }
             
