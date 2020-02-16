@@ -1,0 +1,17 @@
+﻿version: "3"
+services:
+    web:
+        build: .
+        expose:
+           - 80
+           - 443
+        environment:
+           VIRTUAL_HOST: test.ugurdemir.dev
+           LETSENCRYPT_HOST: test.ugurdemir.dev
+           LETSENCRYPT_EMAIL: contact@ugurdemir.dev
+        container_name: core_application
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
