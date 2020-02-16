@@ -5,12 +5,12 @@ options {
 disableConcurrentBuilds()
 }
 
-parameters{
+parameters {
 booleanParam(defaultValue: true, description: '', name: 'Build')
 booleanParam(defaultValue: true, description: '', name: 'Publish')
 }
 
-pipelineTriggers{
+triggers {
 githubPush()
 }
 
