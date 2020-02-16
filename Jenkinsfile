@@ -45,7 +45,7 @@ pipeline
                 {
                     if(params.Publish)
                     {
-                        dir('CoreDocker')
+                        dir('CoreDocker/CoreDocker')
                         {
                             sh label: 'Docker Publishing', script: 'docker-compose up -d'
                         }
