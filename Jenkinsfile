@@ -31,7 +31,7 @@ pipeline
                 {
                     dir('CoreDocker')
                     {
-                        sh label: 'Sonarqube Analyze Begin', script: 'dotnet sonarscanner begin /d:sonar.login=5cfbf8a47ece0542af6b520a8cabb4658da000b9 /k:"CoreDockerToken"'
+                        sh label: 'Sonarqube Analyze Begin', script: 'dotnet-sonarscanner begin /d:sonar.login=5cfbf8a47ece0542af6b520a8cabb4658da000b9 /k:"CoreDockerToken"'
                     }
                 }
               }
@@ -65,7 +65,7 @@ pipeline
                 {
                     dir('CoreDocker')
                     {
-                        sh label: 'Sonarqube Analyze End', script: 'dotnet sonarscanner end /d:sonar.login=5cfbf8a47ece0542af6b520a8cabb4658da000b9'
+                        sh label: 'Sonarqube Analyze End', script: 'dotnet-sonarscanner end /d:sonar.login=5cfbf8a47ece0542af6b520a8cabb4658da000b9'
                     }
                 }
               }
