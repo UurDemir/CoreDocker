@@ -30,7 +30,7 @@ pipeline
                 {
                     dir('CoreDocker')
                     {
-                        sh label: 'Project Building', script: 'dotnet build CoreDocker.sln'
+                        sh label: 'Project Building', script: 'sudo dotnet build CoreDocker.sln'
                     }
                 }
               }
@@ -45,9 +45,9 @@ pipeline
                 {
                     if(params.Publish)
                     {
-                        dir('CoreDocker/CoreDocker')
+                        dir('CoreDocker')
                         {
-                            sh label: 'Docker Publishing', script: 'docker-compose up -d'
+                            sh label: 'Docker Publishing', script: 'sudo docker-compose up -d'
                         }
                     }
                 }
