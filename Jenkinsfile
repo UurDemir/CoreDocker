@@ -8,7 +8,7 @@ pipeline
     }
 
     parameters 
-    
+    {
         booleanParam(defaultValue: true, description: '', name: 'Sonarqube')
         booleanParam(defaultValue: true, description: '', name: 'Build')
         booleanParam(defaultValue: true, description: '', name: 'Publish')
@@ -21,7 +21,7 @@ pipeline
 
     stages 
     {
-		stage('Sonarqube Begin') 
+       stage('Sonarqube Begin') 
        {
         steps
         {
@@ -31,7 +31,7 @@ pipeline
                 {
                     dir('CoreDocker')
                     {
-                        sh label: 'Sonarqube Analyze Begin', script: 'dotnet sonarscanner begin /d:sonar.login=5cfbf8a47ece0542af6b520a8cabb4658da000b9 /k:”CoreDockerToken”'
+                        sh label: 'Sonarqube Analyze Begin', script: 'dotnet sonarscanner begin /d:sonar.login=5cfbf8a47ece0542af6b520a8cabb4658da000b9 /k:"CoreDockerToken"'
                     }
                 }
               }
@@ -55,7 +55,7 @@ pipeline
             
         }
        }
-	   stage('Sonarqube End') 
+       stage('Sonarqube End') 
        {
         steps
         {
@@ -86,7 +86,7 @@ pipeline
                         }
                     }
                 }
-            
+            }
         
         }
     }
