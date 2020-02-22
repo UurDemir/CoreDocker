@@ -32,7 +32,7 @@ pipeline
                     dir('CoreDocker')
                     {
                         sh label: 'Clean Sonarqube Folder' , script: 'rm -r .sonarqube || true'
-                        sh label: 'Sonarqube Analyze Begin', script: 'dotnet sonarscanner begin /k:"CoreDockerProject" /d:sonar.host.url="http://144.91.102.128:9000" /d:sonar.login="5cfbf8a47ece0542af6b520a8cabb4658da000b9"'
+                        sh label: 'Sonarqube Analyze Begin', script: 'sudo $HOME/.dotnet/tools/dotnet-sonarscanner begin /k:"CoreDockerProject" /d:sonar.host.url="http://144.91.102.128:9000" /d:sonar.login="5cfbf8a47ece0542af6b520a8cabb4658da000b9"'
                     }
                 }
               }
@@ -66,7 +66,7 @@ pipeline
                 {
                     dir('CoreDocker')
                     {
-                        sh label: 'Sonarqube Analyze End', script: 'dotnet sonarscanner end /d:sonar.login="5cfbf8a47ece0542af6b520a8cabb4658da000b9"'
+                        sh label: 'Sonarqube Analyze End', script: 'sudo $HOME/.dotnet/tools/dotnet-sonarscanner end /d:sonar.login="5cfbf8a47ece0542af6b520a8cabb4658da000b9"'
                     }
                 }
               }
