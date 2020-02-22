@@ -31,7 +31,7 @@ pipeline
                 {
                     dir('CoreDocker')
                     {
-                        sh label: 'Sonarqube Analyze Begin', script: 'dotnet sonarscanner begin /k:"CoreDockerToken"'
+                        sh label: 'Sonarqube Analyze Begin', script: 'sudo dotnet sonarscanner begin /k:"CoreDockerProject" /d:sonar.host.url="http://144.91.102.128:9000" /d:sonar.login="5cfbf8a47ece0542af6b520a8cabb4658da000b9"'
                     }
                 }
               }
